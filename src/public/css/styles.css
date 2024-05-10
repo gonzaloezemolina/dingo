@@ -1,0 +1,80 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@import url(https://db.onlinewebfonts.com/c/575fc498ad34ad0f411e618dad9ed36a?family=Graphik+LC+Web+Regular);
+@font-face {
+    font-family: "Graphik LC Web Regular";
+    src: url("https://db.onlinewebfonts.com/t/575fc498ad34ad0f411e618dad9ed36a.eot");
+    src: url("https://db.onlinewebfonts.com/t/575fc498ad34ad0f411e618dad9ed36a.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/575fc498ad34ad0f411e618dad9ed36a.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/575fc498ad34ad0f411e618dad9ed36a.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/575fc498ad34ad0f411e618dad9ed36a.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/575fc498ad34ad0f411e618dad9ed36a.svg#Graphik LC Web Regular")format("svg");
+}
+
+
+
+header{
+    width: 100%;
+    height: 70px;
+    color: rgb(238, 118, 5);
+    background-color: black;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    a{
+        color:  rgb(238, 118, 5) ;
+        text-decoration: none;
+    }
+}
+
+.logo{
+    height: 50px;
+    width: 200px;
+} 
+
+ul{
+    gap: 20px;
+    display: flex;
+    list-style: none;
+}
+
+
+nav{
+    display: flex;
+    gap: 50px;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+.nav_btn{
+    color: rgb(0, 0, 0);
+    background-color: rgb(238, 118, 5) ;
+    border-radius: 5px;
+    border: 0;
+    height: 30px;
+    width: 110px;
+    cursor: pointer;
+    font-family: "Graphik LC Web Regular"; 
+}
+
+.nav_btn:hover{
+    transition: .5s;
+    background-color: aqua;
+}
+
+.dale{
+    font-size: 200px;
+}
+
+.main{
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    font-family: "Graphik LC Web Regular"; 
+    height: 100vh;
+}
+
+

@@ -1,0 +1,14 @@
+1. Contact model must contain:
+-Name
+-Email
+-Phone number 
+-Lead status
+-Where it was caught
+-Last contact
+-Empathy (visualized like a % related to the general concept, and a button to see the whole of it)
+-Creation
+
+2. Map of Empathy
+It should be apart from the CRM (In marketing tools) and it has to be in general for all the contacts.
+
+Create a general concept of the contact. 
