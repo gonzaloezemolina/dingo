@@ -66,15 +66,78 @@ nav{
     background-color: aqua;
 }
 
-.dale{
-    font-size: 200px;
-}
+
 
 .main{
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
     font-family: "Graphik LC Web Regular"; 
     height: 100vh;
 }
 
 
+.home_container{
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+    height: 100vh;
+}
+
+.home_title{
+    font-size: 55px;
+    padding-bottom: 25px;
+}
+
+.home_left{
+    padding-top: 15%;
+    padding-left: 10%;
+    p{
+        font-size: 17px;
+        text-align: justify;
+        padding-bottom: 20px;
+    }
+}
+
+.home_btn{
+    padding-top: 35px;
+}
+
+.btn_home{
+    margin-right: 25px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(238, 118, 5) ;
+    border-radius: 5px;
+    border: 0;
+    height: 50px;
+    width: 150px;
+    cursor: pointer;
+    font-family: "Graphik LC Web Regular"; 
+}
+
+.btn_home:hover{
+    transition: .5s;
+    background-color: rgb(170, 84, 3) ;
+}
+
+.home_right{
+    text-align: center;
+    img{
+        padding-top: 10%;
+    }
+}
+
+/* Tools section */
+
+.tools{
+    background-color: white;
+    height: 100vh;
+}
+
+.tools_container{
+    width: 100%;
+    background-color: rgb(238, 118, 5);
+    height: 40px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
