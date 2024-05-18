@@ -6,12 +6,13 @@ viewRouter.get("/", (req,res) => {
     res.render('home');
 })
 
-viewRouter.get("/tools", (req,res) =>{
-    res.render("tools");
-})
 
 viewRouter.get('/crm',(req,res) => {
-    res.render("crm", {tools:true});
+    res.render("crm");
+})
+
+viewRouter.get("/buyerpersona", (req,res) => {
+    res.render("buyerpersona")
 })
 
 

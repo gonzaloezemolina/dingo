@@ -5,6 +5,8 @@ import Handlebars from "handlebars";
 import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access";
 import ExpressHandlebars  from "express-handlebars";
 import __dirname from "./utils.js";
+import mongoose from "mongoose";
+
 
 export const app = express();
 
@@ -28,3 +30,8 @@ app.use(express.static(`${__dirname}/public`))
 
 
 app.use("/", viewRouter);
+
+
+//Mongo
+mongoose.set('strictQuery', false)
+const conexion = mongoose.connect(config.mongo.URL)
