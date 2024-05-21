@@ -1,37 +1,69 @@
 <div class="tools">
-
     <nav class="tools_container">
-    <ul>
-        <a href="/crm">CRM</a><li></li>
-        <li>Marketing</li>
-        <li>Contenidos</li>
-        <li>Ventas</li>
-        <a href="/buyerpersona">Buyer Persona</a><li></li>
-    </ul>
-</nav>
-
-
-<div class="contact_bar_information">
-    <div class="name"><p>Nombre</p></div>
-    <hr>
-    <div class="email"><p>Email</p></div>
-    <hr>
-    <div class="phone"><p>Telefono</p></div>
-    <hr>
-    <div class="leadstatus"><p>Estado de Lead</p></div>
-    <hr>
-    <div class="caught"><p>Canal</p></div>
-    <hr>
-    <div class="lasttouch"><p>Ultimo contacto</p></div>
-    <hr>
-    <div class="empathy"><p>Empatia</p></div>
-    <hr>
-    <div class="creation"><p>Creacion</p></div>
-
+        <ul>
+            <li><a href="/crm">CRM</a></li>
+            <li>Marketing</li>
+            <li>Contenidos</li>
+            <li>Ventas</li>
+            <li><a href="/pipeline">Pipeline</a></li>
+            <li><a href="/buyerpersona">Buyer Persona</a></li>
+        </ul>
+    </nav>
+    <div class="contact_list">
+        {{#if contacts.length}}
+            <div class="table-container">
+                <table id="contactTable">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Estado de Lead</th>
+                            <th>Canal</th>
+                            <th>Último contacto</th>
+                            <th>Empatía</th>
+                            <th>Creación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each contacts}}
+                            <tr>
+                                <td>{{this.name}}</td>
+                                <td>{{this.email}}</td>
+                                <td>{{this.phone}}</td>
+                                <td>{{this.status}}</td>
+                                <td>{{this.channel}}</td>
+                                <td>{{#if this.lastTouch}}{{this.lastTouch}}{{/if}}</td>
+                                <td>{{this.empathy}}</td>
+                                <td>{{this.creation}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        {{else}}
+            <p>No hay contactos disponibles.</p>
+        {{/if}}
+    </div>
 </div>
 
 
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <div class="lowbar_container">
@@ -42,7 +74,6 @@
 </svg>
         {{!-- <img src="../img/User.svg" alt=""> --}}
     </div>
-
     <div class="contacts" title="Tickets">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket" viewBox="0 0 16 16">
   <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6zM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5z"/>
@@ -85,6 +116,54 @@
 
 
 
-<script src="/js/toolbar.js"></script>
-{{!-- Si no hay contacto = No existen contactos + ilustracion.
-Debajo, debe haber una lista de opciones para contacto, empresa, llamadas, tareas. --}}
+
+<div class="admin-element" title="Añade un contacto" id="adminElement">
+   <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+  <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+  <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+</svg>
+</div>
+  <div class="modal" id="adminModal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Añadir contacto</h2>
+        <form id="contactForm">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="phone">Teléfono</label>
+            <input type="text" id="phone" name="phone" required>
+            <label for="status">Estado del lead</label>
+<select id="status" name="status" required>
+    <option value="activo">Nuevo</option>
+    <option value="en negociacion">En negociacion</option>
+    <option value="intento de contacto">Intento de contacto</option>
+    <option value="ganado">Ganado</option>
+    <option value="mal momento">Mal momento</option>
+    <option value="perdido">Perdido</option>
+</select>
+
+<label for="channel">Canal</label>
+<select id="channel" name="channel" required>
+    <option value="telefono">Teléfono</option>
+    <option value="correo">Correo electrónico</option>
+    <option value="presencial">Presencial</option>
+    <option value="Linkedin">Linkedin</option>
+    <option value="whatsapp">Whatsapp</option>
+    <option value="instagram">Instagram</option>
+</select>
+
+            <label for="lastTouch">Último contacto</label>
+            <input type="date" id="lastTouch" name="lastTouch">
+            <button type="submit" class="addContactButton">Crear contacto</button>
+        </form>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<script src="/js/addContact.js"></script>
