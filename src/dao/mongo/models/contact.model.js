@@ -5,6 +5,7 @@ const schema = new mongoose.Schema({
     email: String,
     phone: Number,
     status: String,
+    source: String,
     channel: String,
     lastTouch: Date,
     creation: { type: Date, default: Date.now }

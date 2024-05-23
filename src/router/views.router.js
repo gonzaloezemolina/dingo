@@ -1,4 +1,5 @@
 import contactController from "../controllers/contact.controller.js";
+import pipelineController from "../controllers/pipeline.controller.js";
 import { Router } from "express";
 
 const viewRouter = Router();
@@ -17,12 +18,13 @@ viewRouter.get('/crm', async (req, res) => {
     }
 });
 
-// viewRouter.get('/crm',(req,res) => {
-//     res.render("crm");
-// })
-
 viewRouter.get("/buyerpersona", (req,res) => {
     res.render("buyerpersona")
+})
+
+viewRouter.get("/pipeline", async (req,res) => {
+    const stages = await pipelineController.getStages();
+    res.render("pipeline", {stages})
 })
 
 

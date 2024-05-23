@@ -35,9 +35,9 @@ const getContacts = async (req, res) => {
 
 const createContact = async (req, res, next) => {
     try {
-      const { name, email, phone, status, channel, lastTouch } =
+      const { name, email, phone, status, source, channel, lastTouch } =
         req.body;
-      if (!name || !email || !phone || !status || !channel ) {
+      if (!name || !email || !phone || !status || !source || !channel ) {
         return res.status(400).json({ message: "Error! product not created" });
       }
   
@@ -46,6 +46,7 @@ const createContact = async (req, res, next) => {
         email,
         phone,
         status,
+        source,
         channel,
         lastTouch,
       };

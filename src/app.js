@@ -2,6 +2,7 @@ import config from "./config/config.js";
 import express from 'express';
 import viewRouter from "./router/views.router.js";
 import contactRouter from "./router/contact.router.js";
+import pipelineRouter from "./router/pipeline.router.js";
 import Handlebars from "handlebars";
 import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access";
 import ExpressHandlebars  from "express-handlebars";
@@ -32,6 +33,7 @@ app.use(express.static(`${__dirname}/public`))
 
 app.use("/", viewRouter);
 app.use("/api/contacts", contactRouter);
+app.use("/api/pipeline", pipelineRouter);
 
 //Mongo
 mongoose.set('strictQuery', false)
