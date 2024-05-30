@@ -1,13 +1,17 @@
 export default class pipelineService {
-    constructor (dao) {
+    constructor(dao) {
         this.dao = dao;
     }
 
-    getStages = (stages) => {
-        return this.dao.getStages(stages);
+    getStagesWithBusinesses = () => {
+        return this.dao.getStages();
     }
 
     createStage = (stage) => {
         return this.dao.createStage(stage);
+    }
+
+    addBusinessToStage = (stageId, business) => {
+        return this.dao.addBusinessToStage(stageId, business);
     }
 }

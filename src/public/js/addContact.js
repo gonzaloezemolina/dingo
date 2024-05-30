@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(response => {
             if (response.ok) {
+                location.reload();
                 return response.json();
             }
             throw new Error('Error al crear contacto');

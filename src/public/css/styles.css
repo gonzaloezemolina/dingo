@@ -248,6 +248,18 @@ nav{
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.addStageModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 .modal-content {
     background-color: #000000;
     color:  rgb(238, 118, 5);
@@ -319,5 +331,15 @@ form{
 
 #contactTable th {
     background-color: #f2f2f2; /* Color de fondo para encabezados */
-    text-align: left; /* Alinea el texto a la izquierda */
+    text-align: center; /* Alinea el texto a la izquierda */
+}
+
+
+.pipeline-column{
+    color: #000000;
+}
+
+.pipeline_stages{
+    color: #000000;
+    text-align: center;
 }

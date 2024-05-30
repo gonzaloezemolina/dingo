@@ -22,34 +22,47 @@
 
     <div class="pipeline-container">
     <!-- Columnas para cada etapa del pipeline -->
+    <div class="table-container">
+                <table id="contactTable" class="pipeline_stages">
+                    <thead>
+                        <tr>
+                            <th>Captacion</th>
+                            <th>Campaña email marketing</th>
+                            <th>Test</th>
+                            <th>Cierre y formalizacion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <td>Nombre:J.J Lopez</td>
+                                <td>Nombre:Ana Bianchi</td>
+                                <td>Nombre:Edgar Ruffinengo</td>
+                                <td>Nombre: Gaston Santhia
+                                  <br>
+                                  Valor:
+                                  <br> 
+                                  Fecha de cierre: 
+                                </td>
+                            </tr>
+                    </tbody>
     {{#each stages}}
     <div class="pipeline-column">
-        <h2>{{this.stage}}</h2>
-        <ul>
+        <h2>{{this.name}}</h2>
+        <h2>{{this._id}}</h2>
+        {{!-- <ul>
             {{#each this.bussiness}}
             <li>{{this.nombre}} - {{this.value}} - {{this.deadline}}</li>
             {{/each}}
-        </ul>
+        </ul> --}}
+        <div>
+          <button class="create-business-button" data-stage-id="{{this._id}}">Crear negocio</button>
+        </div>
     </div>
     {{/each}}
 </div>
 
     
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -107,52 +120,28 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="admin-element" title="Añade una etapa" id="adminElement">
    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-node-plus-fill" viewBox="0 0 16 16">
   <path d="M11 13a5 5 0 1 0-4.975-5.5H4A1.5 1.5 0 0 0 2.5 6h-1A1.5 1.5 0 0 0 0 7.5v1A1.5 1.5 0 0 0 1.5 10h1A1.5 1.5 0 0 0 4 8.5h2.025A5 5 0 0 0 11 13m.5-7.5v2h2a.5.5 0 0 1 0 1h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 0 1 0-1h2v-2a.5.5 0 0 1 1 0"/>
 </svg>
 </div>
-  <div class="modal" id="adminModal">
+  <div class="addStageModal" id="adminModal">
     <div class="modal-content">
       <span class="close" id="closeModal">&times;</span>
       <h2>Añadir etapa</h2>
-        <form id="contactForm">
-            <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" required>
+        <form id="addStageForm">
+            <label for="etapa">Nombre de etapa</label>
+            <input type="text" id="etapa" name="etapa" required>
+
+            {{!-- <label for="name">Nombre</label>
+            <input type="text" id="name" name="name">
 
             <label for="value">Valor</label>
             <input type="text" id="value" name="value" required>
 
             <label for="deadline">Fecha de cierre</label>
-            <input type="date" id="deadline" name="deadline">
-            <button type="submit" class="addStageButton">Crear etapa</button>
+            <input type="date" id="deadline" name="deadline"> --}}
+            <button type="submit" id="addStageButton">Crear etapa</button>
         </form>
     </div>
   </div>
@@ -162,4 +151,4 @@
 
 
 
-{{!-- <script src="/js/addContact.js"></script> --}}
+<script src="/js/addBusiness.js"></script>
