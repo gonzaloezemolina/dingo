@@ -1,4 +1,15 @@
-{
+  {
+  "name": "dingo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.5",
     "commander": "^12.0.0",
@@ -14,17 +25,5 @@
     "nodemon": "^3.1.0",
     "passport": "^0.7.0",
     "socket.io": "^4.7.5"
-  },
-  "name": "dingo",
-  "version": "1.0.0",
-  "main": "src/app.js",
-  "type": "module",
-  "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": "Marketing software by Dingo"
+  }
 }
