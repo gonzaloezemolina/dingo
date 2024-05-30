@@ -17,7 +17,7 @@
   },
   "name": "dingo",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/app.js",
   "type": "module",
   "scripts": {
     "start": "node src/app.js",
