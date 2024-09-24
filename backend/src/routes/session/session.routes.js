@@ -8,15 +8,17 @@ router.post('/registro', async (req,res) => {
     const {
         userName,
         email,
-        password
+        password,
+        role
     } = req.body;
     const newUser =  {
         userName,
         email,
-        password
+        password,
+        role
     } 
     const result = await userService.create(newUser);
-    res.status(200).json({payload:result._id ,user: {userName,email}});
+    res.status(200).json({payload:result._id ,user: {userName,email,role}});
 })
 
 router.post('/login', async (req,res) => {

@@ -34,6 +34,7 @@ const Dashboard = () => {
   return (
     <div>
       <h1>Bienvenido {user.userName}</h1>
+      <h2>{user.role}</h2>
       <Link to={'/perfil'}>
         <li>Configuración</li>
       </Link>
