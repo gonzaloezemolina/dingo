@@ -1,0 +1,7 @@
+@font-face {
+    font-family: "AcidGrotesk-R";
+    src: url(../public/font/AcidGrotesk-Regular.otf);
+  }
+  body{
+    font-family: "AcidGrotesk-R";  
+  }

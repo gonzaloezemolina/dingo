@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Dingo | Login</title>
+</head>
+<body>
+    <div class="login_main">
+        <div class="login_container">
+            <div class="login">
+                <h1>Iniciar sesión</h1>
+                <p>Ingresa los detalles de tu cuenta</p>
+                <form id="loginForm">
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <br><br>
+                    <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                    <br><br>
+                    <button type="submit" id="iniciar">Iniciar</button>
+                </form>
+
+                <div class="no_account">
+                    <span>¿No tienes una cuenta?</span>
+                    <a href="/registro">
+                        <button>Registrate</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="login_apart">
+                <h2>Bienvenido a Dingo!</h2>
+                <p>Inicia sesión para acceder a tu cuenta.</p>
+                <img src="/images/woman-login.gif" alt="Mujer con megafono rodeada de elementos de Marketing!" width="450px" height="450px">
+            </div>
+        </div>
+    </div>
+    <script src="/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+.sidebar {
+    width: 50px;
+    background-color: #f8f9fa;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: #f37221;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ul{
+      padding: 0;
+      gap: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      li{
+        text-align: center;
+        list-style: none;
+        a{
+          color: rgba(255, 255, 255, 0.829);
+        }
+      }
+    }
+  }
+
+ 
