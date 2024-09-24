@@ -1,15 +1,12 @@
 import React from 'react'
 import './Profile.css'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 const Profile = () => {
 
     const logout = async () => {
         try {
             const response = await fetch('http://localhost:8080/api/sessions/logout', {
-                method:'POST',
+                method:'DELETE',
                 credentials: 'include'
             });
             if (response.status === 200) {

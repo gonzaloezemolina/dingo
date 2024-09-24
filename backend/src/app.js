@@ -5,6 +5,7 @@ import cors from 'cors'
 import config from './config/config.js';
 import viewRouter from './routes/site/site.routes.js';
 import sessionRouter from './routes/session/session.routes.js';
+import userRouter from './routes/software/user.routes.js'
 import __dirname from './utils.js';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
@@ -19,11 +20,11 @@ app.use(session({
     resave:false,
     saveUninitialized:false,
     secret:'wolf',
-    cookie: {
-        secure: true,            
-        httpOnly: true,         
-        sameSite: 'None',        
-    }
+    // cookie: {
+    //     secure: true,            
+    //     httpOnly: true,         
+    //     sameSite: 'None',        
+    // }
 }));
 
 app.use(cors({
@@ -42,5 +43,6 @@ const server = app.listen(port, () => {
 
 app.use('/', viewRouter);
 app.use('/api/sessions/', sessionRouter);
+app.use('/api/users/', userRouter);
 
 
