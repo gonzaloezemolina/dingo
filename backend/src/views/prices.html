@@ -3,9 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>Esto es otra pag</h1>
+    <header>
+        <nav class="navbar" id="navbar">
+            <div class="nav_info">
+                <div class="nav_logo">
+                    <a href="/">
+                        <img src="/images/newlogo.png" alt="Logo de Dingo">
+                    </a>
+            </div>
+            <div class="nav_items">
+                <ul>
+                    <li>Productos</li>
+                    <a href="/precios">
+                        <li>Precios</li>
+                    </a>
+                    <li>Recursos</li>
+                    <li>Soluciones</li>
+                </ul>
+            </div>
+            </div>
+            <div class="nav_actions">
+                <ul>
+                    <li>Ayuda</li>
+                    <a href="/registro">
+                        <button>Registrarse</button>
+                    </a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <h1 class="heading">Escoge tu plan</h1>
+        <div class="grid">
+          <div class="card" id="starter">
+            <div class="card-header">
+              <h2 class="card-title">Starter</h2>
+              <p class="card-description">Para freelancers que comienzan a gestionar sus proyectos y buscan simplicidad.</p>
+            </div>
+            <div class="card-content">
+              <p class="card-price">$6.99 <span class="price-period">/mes</span></p>
+              <ul class="features-list">
+                <li class="feature-item"><span class="check">&#10003;</span> 1 user</li>
+                <li class="feature-item"><span class="check">&#10003;</span> 5GB storage</li>
+                <li class="feature-item"><span class="check">&#10003;</span> Basic support</li>
+                <li class="feature-item"><span class="check">&#10003;</span> Limited integrations</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <button class="btn-outline">Elegir Starter</button>
+            </div>
+          </div>
+    
+          <div class="card highlighted" id="pro">
+            <div class="card-header">
+              <h2 class="card-title">Pro</h2>
+              <p class="card-description">Para profesionales que quieren optimizar su gestión y buscan herramientas avanzadas.</p>
+            </div>
+            <div class="card-content">
+              <p class="card-price">$13.99 <span class="price-period">/mes</span></p>
+              <ul class="features-list">
+                <li class="feature-item"><span class="check">&#10003;</span> 2 Miembros</li>
+                <li class="feature-item"><span class="check">&#10003;</span> 50GB storage</li>
+                <li class="feature-item"><span class="check">&#10003;</span> Priority support</li>
+                <li class="feature-item"><span class="check">&#10003;</span> Advanced integrations</li>
+                <li class="feature-item"><span class="check">&#10003;</span> Analytics</li>
+                <li class="feature-item"><span class="check">&#10003;</span> Analytics</li>
+                <li class="feature-item"><span class="check">&#10003;</span> Analytics</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <button class="btn">Elegir Pro</button>
+            </div>
+          </div>
+    
+          <div class="card" id="growth">
+            <div class="card-header">
+              <h2 class="card-title">Growth</h2>
+              <p class="card-description">Diseñado para negocios en etapa de crecimiento.</p>
+            </div>
+            <div class="card-content">
+              <p class="card-price">$23.99 <span class="price-period">/mes</span></p>
+              <ul class="features-list">
+                <li class="feature-item"><span class="check">&#10003;</span> Unlimited users</li>
+                <li class="feature-item"><span class="check">&#10003;</span> 500GB storage</li>
+                <li class="feature-item"><span class="check">&#10003;</span> 24/7 support</li>
+                <li class="feature-item"><span class="check">&#10003;</span> Dingo AI</li>
+                <li class="feature-item"><span class="check">&#10003;</span> Advanced analytics</li>
+                <li class="feature-item"><span class="check">&#10003;</span> API access</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <button class="btn-outline">Elegir Growth</button>
+            </div>
+          </div>
+    
+        </div>
+      </div>
 </body>
 </html>

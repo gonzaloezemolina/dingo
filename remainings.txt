@@ -1,0 +1,14 @@
+•	Gestión de contactos
+•	Gestión de tareas y proyectos (limitada a proyectos pequeños)
+•	Calendario (sin automatización avanzada)
+•	Scheduler (general, sin social media)
+•	Time tracker 
+•	Email templates (solo básicos)
+•	Formularios de contacto y lead (sin integraciones avanzadas)
+•	Contratos y plantillas básicas
+•	Pipeline/Oportunidades 
+•	Finanzas (facturación básica, gastos simples)
+•	Integraciones: Stripe, PayPal, MercadoPago, Notion
+•	Capacidad 3GB
+
+Todo esto viene a ser el paquete starter. No hace falta que las integraciones sean realistas dado a que en la exposición no se vera. Capaz la de notion jeje

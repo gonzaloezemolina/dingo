@@ -19,7 +19,6 @@ const Profile = () => {
 
   return (
     <div>
-        <h1>Perfil</h1>
         <button onClick={logout}>
             Cerrar sesión
         </button>

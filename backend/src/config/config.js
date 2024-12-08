@@ -14,7 +14,7 @@ dotenv.config({
 
 export default {
   app: {
-    PORT: process.env.PORT || 8080,
+    PORT: process.env.PORT,
     ADMIN_EMAIL: process.env.ADMIN_EMAIL,
     ADMIN_PASSWORD: process.env.ADMIN_PASSWORD
   },
@@ -25,4 +25,7 @@ export default {
     COOKIE: process.env.JWT_COOKIE,
     SECRET: process.env.JWT_SECRET || "jwtSecret",
   },
+  front:{
+    FRONT: process.env.FRONT
+  }
 };

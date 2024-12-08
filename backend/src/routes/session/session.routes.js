@@ -1,4 +1,5 @@
 import { Router } from "express";
+import isAuth from "../../middlewares/auth.js";
 import userController from "../../controllers/user.controller.js";
 
 const router = Router();
@@ -26,7 +27,7 @@ router.post('/login', async (req,res) => {
     if (! email || ! password) {
         return res.status(400).json({message:'Usuario no encontrado'});
     }
-    const result = await userService.getById({email,password});
+    const result = await userService.getByParams({email,password});
     if (!result) {
         return res.status(400).send({message:'Credenciales incorrectas'})
     }
@@ -45,5 +46,10 @@ router.delete('/logout', async (req,res) => {
         };
     });
 });
+
+router.get('/dashboard', isAuth, (req, res) => {
+    res.json({ message: 'Accediste a una ruta protegida' });
+});
+// este endpoint no esta funcionando
 
 export default router;

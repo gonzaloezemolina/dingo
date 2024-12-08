@@ -1,0 +1,152 @@
+:root {
+    --color-orange: #f97316;
+    --color-sky: #0ea5e9;
+    --color-green: #22c55e;
+    --color-yellow: #eab308;
+    --color-purple: #a855f7;
+    --color-red:#e41616;
+    --color-blue: #3b82f6;
+    --color-strong-blue: #0126f8;
+    --color-zinc-950: #09090b;
+    --color-zinc-900: #18181b;
+    --color-zinc-800: #27272a;
+    --color-zinc-400: #a1a1aa;
+    --color-white: #ffffff;
+  } 
+  
+  /* body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-zinc-950);
+    color: var(--color-white);
+    margin: 0;
+    padding: 0;
+  }  */
+  
+  .containerIntegrations{
+    max-width: 1200px;
+  }
+  
+  .header {
+    margin-bottom: 32px;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .header p {
+    color: var(--color-zinc-400);
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }
+  
+  .card {
+    background-color: var(--color-zinc-900);
+    border: 1px solid var(--color-zinc-800);
+    border-radius: 8px;
+    padding: 24px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .card:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .card-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .badge {
+    background-color: var(--color-zinc-800);
+    color: var(--color-zinc-400);
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 9999px;
+  }
+  
+  .card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  
+  .card p {
+    font-size: 0.875rem;
+    color: var(--color-zinc-400);
+    margin-bottom: 16px;
+  }
+  
+  .button {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    background-color: var(--color-orange);
+    color: var(--color-white);
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #notion{
+    color:#09090b;
+  }
+  
+  .button:hover {
+    background-color: #ea580c;
+  }
+  
+  /* Color variations for different integrations */
+  .card.notion .card-icon { color: var(--color-white); }
+  .card.meta .card-icon, .card.linkedin .card-icon, .card.microsoft-teams .card-icon { color: var(--color-sky); }
+  .card.whatsapp .card-icon { color: var(--color-green); }
+  .card.mercado-libre .card-icon { color: var(--color-yellow); }
+  .card.tienda-nube .card-icon { color: var(--color-purple); }
+  .card.manychat .card-icon { color: var(--color-blue); }
+  
+  .card.notion .button { background-color: var(--color-white); }
+  .card.meta .button, .card.linkedin .button, .card.microsoft-teams .button { background-color: var(--color-sky); }
+  .card.whatsapp .button { background-color: var(--color-green); }
+  .card.mercado-libre .button { background-color: var(--color-yellow); }
+  .card.tienda-nube .button { background-color: var(--color-purple); }
+  .card.gmail .button { background-color:var(--color-red) }
+  .card.manychat .button { background-color: var(--color-blue); }
+  .card.mercadopago .button { background-color: var(--color-sky); }
+  .card.stripe .button { background-color: var(--color-purple); }
+  .card.paypal .button { background-color: var(--color-strong-blue); }
+  
+  .card.notion .button:hover { background-color: #cfcfcf; }
+  .card.meta .button:hover, .card.linkedin .button:hover, .card.microsoft-teams .button:hover { background-color: #0284c7; }
+  .card.whatsapp .button:hover { background-color: #16a34a; }
+  .card.mercado-libre .button:hover { background-color: #ca8a04; }
+  .card.tienda-nube .button:hover { background-color: #9333ea; }
+  .card.gmail .button:hover { background-color: #a31111; }
+  .card.manychat .button:hover { background-color: #2563eb; }
+  .card.mercadopago .button:hover { background-color: #257beb; }
+  .card.stripe .button:hover { background-color: #9333ea; }
+  .card.paypal .button:hover { background-color: #071b8f; }
+  
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  

@@ -7,7 +7,7 @@
     background-color: #f37221;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
     ul{
       padding: 0;
       gap: 25px;
@@ -25,4 +25,10 @@
     }
   }
 
- 
+ .sidebar:hover{
+  transition: .8s;
+  width: 200px;
+  .content{
+    width: 80%;
+  }
+ }

@@ -5,3 +5,15 @@
   body{
     font-family: "AcidGrotesk-R";  
   }
+  .line{
+    width: 90%;
+    height: 1px;
+    background-color: white;
+    background: linear-gradient(to right, 
+    orange 0%, 
+    orange 20%, 
+    white 40%, 
+    #e4e4e4 60%, 
+    rgba(66, 66, 66, 0.5) 80%, 
+    rgba(66, 66, 66, 0) 100%);
+}

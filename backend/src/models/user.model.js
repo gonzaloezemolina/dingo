@@ -8,9 +8,27 @@ const schema = new mongoose.Schema({
     password: String,
     role:{
         type:String,
-        enum: ["Freelancer", "Emprendedor", "Content creator"],
-        default: "Emprendedor",
+        enum: ["Freelancer", "Emprendedor"],
+        default: "Freemium",
     },
+    contacts: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'contacts',  // referencia al modelo 'contacts'
+        },
+      ],
+    tasks: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'tasks',  // referencia al modelo 'tasks'
+        },
+      ],
+    expenses: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'expenses',
+      }
+    ]
 });
 
 const userModel = mongoose.model(collection,schema);
