@@ -1,64 +1,31 @@
+import React from 'react';
 import './App.css';
-import Profile from './components/Profile/Profile'
-import Layout from './components/Layout/Layout'
-import Settings from './components/Settings/Settings';
-import Loader from './components/Loader/Loader';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import { useState, useEffect } from 'react';
-import Bills from './components/Bills/Bills';
-import Contacts from './components/Contacts/Contacts';
-import Tasks from './components/Tasks/Tasks';
-import Interface from './components/Interface/Interface';
-import Integrations from './components/Integrations/Integrations';
-import TimeTracker from './components/TimeTracker/TimeTracker';
-import Dashboard from './components/Dashboard/Dashboard';
-import Security from './components/Security/Security';
-import Help from './components/Help/Help';
-import Backups from './components/Backups/Backups';
-import Alerts from './components/Alerts/Alerts';
+import Layout from './components/Layout/Layout'
+import Dashboard from './components/Dashboard/Dashboard'
+import Contacts from './components/Contacts/Contacts'
+import Settings from './components/Settings/Settings'
+import Interface from './components/Interface/Interface'
+import Bills from './components/Bills/Bills'
+import Alerts from './components/Alerts/Alerts'
+import Backups from './components/Backups/Backups'
+import Security from './components/Security/Security'
+import Help from './components/Help/Help'
+import Profile from './components/Profile/Profile'
+import Tasks from './components/Tasks/Tasks'
+import Integrations from './components/Integrations/Integrations'
+import TimeTracker from './components/TimeTracker/TimeTracker'
 import Templates from './components/Templates/Templates'
-import Budgets from './components/Budgets/Budgets';
+import Budgets from './components/Budgets/Budgets'
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch('https://dingo-kszy.onrender.com/api/users/usuario', {
-          method: 'GET',
-          credentials: 'include'
-        });
-        
-        if (response.ok) {
-          const data = await response.json();
-          setUser(data);
-        } else {
-          console.log('No se pudieron obtener los datos de usuario');
-        }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchUserData();
-  }, []);
-
-  // Si aún está cargando, muestra el loader
-  if (isLoading) {
-    return <Loader />;
-  }
-
   return (
     <UserProvider>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Layout user={user}/>}>
-            <Route index element={<Dashboard user={user} />} />
+          <Route path='/' element={<Layout/>}>
+            <Route index element={<Dashboard />} />
             <Route path='contactos' element={<Contacts/>}/>
             <Route path='configuracion' element={<Settings/>}>
               <Route path='ui' element={<Interface/>}/>

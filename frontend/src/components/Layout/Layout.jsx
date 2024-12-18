@@ -1,13 +1,16 @@
 import React from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import SideBar from '../SideBar/SideBar'
+import { useUser } from '../../context/UserContext'
+import Loader from '../Loader/Loader'
 import './Layout.css'
 
-const Layout = ({user}) => {
+const Layout = () => {
+  const { user, isLoading } = useUser();
   const location = useLocation();
   const titlesAndDescriptions = {
     '/': {
-      title: user ? `Bienvenido ${user.userName}` : 'Bienvenido',
+      title: user ? `Bienvenido ` : 'Bienvenido',
       description: 'Dashboard'
     },
     '/contactos': {
@@ -19,7 +22,7 @@ const Layout = ({user}) => {
       description: 'Ajusta tus preferencias'
     },
     '/perfil': {
-      title: `Perfil de ${user.userName}`,
+      title: `Perfil`,
       description: 'Detalles de tu cuenta'
     },
     '/tareas':{
@@ -59,6 +62,10 @@ const Layout = ({user}) => {
 
   const currentRoute = titlesAndDescriptions[location.pathname];
   const showHeader = Boolean(currentRoute);
+
+  if (isLoading) {
+    return <Loader />; // O tu componente de carga
+  }
 
   return (
     <div className='layout'>

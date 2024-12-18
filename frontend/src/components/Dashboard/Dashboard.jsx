@@ -2,22 +2,33 @@ import React from 'react';
 import './Dashboard.css';
 import { FaClock, FaDollarSign,FaCheck } from 'react-icons/fa'; // Font Awesome Icons
 import { MdOutlineCalendarToday } from 'react-icons/md'; 
+import { useUser } from '../../context/UserContext';
+import Loader from '../Loader/Loader';
 // import Calendar from '../Calendario/Calendario';
 
-const Dashboard = ({ user, contacts }) => {
+const Dashboard = () => {
   const portfolio = './paraeldashboard.png'
     const mercadopago = './mercadopago.png'
     const notion = './notion.png'
     const stripe = './stripe.webp'
     const gmail = './gmail.png'
 
-    const clientes = `Total de clientes: ${user.contacts}`
+    const { user, isLoading } = useUser();
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (!user) {
+    return <div>Por favor, inicia sesión</div>;
+  }
+
   return (
     <div className="dashboard">
 
   <div class="div1">
     <h3>Clientes Activos</h3>
-    <p>{clientes}</p>
+    <p>0</p>
   </div>
 
 
