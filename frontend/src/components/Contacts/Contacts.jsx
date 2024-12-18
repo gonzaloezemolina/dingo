@@ -44,7 +44,7 @@ const Contacts = () => {
 
   const addContact = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/contacts/newContact/${user._id}`, {
+      const response = await fetch(`https://dingo-kszy.onrender.com/api/contacts/newContact/${user._id}`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json"

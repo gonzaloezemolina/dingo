@@ -13,7 +13,7 @@ const Budgets = () => {
 
     useEffect(() => {
         if (user && user._id) { // Asegúrate de que user._id esté definido
-            fetch(`http://localhost:8080/api/contacts/${user._id}`)
+            fetch(`https://dingo-kszy.onrender.com/api/contacts/${user._id}`)
                 .then(res => res.json())
                 .then(data => {
                     if (Array.isArray(data)) { // Verifica que sea un array antes de usarlo
@@ -42,7 +42,7 @@ const Budgets = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:8080/api/budgets/budget/${user._id}`, {
+      const response = await fetch(`https://dingo-kszy.onrender.com/api/budgets/budget/${user._id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(budgetData),
