@@ -15,12 +15,14 @@ export const UserProvider = ({ children }) => {
                     credentials: 'include'
                 });
                 
+                console.log('Respuesta del servidor:', response.status); // Agrega este log
+
                 if (response.ok) {
                     const data = await response.json();
+                    console.log('Datos de usuario recibidos:', data); // Agrega este log
                     setUser(data);
                 } else {
-                    // No redirigir automáticamente, solo log
-                    console.log('No se pudo obtener el usuario');
+                    console.log('No se pudo obtener el usuario. Status:', response.status);
                     setUser(null);
                 }
             } catch (error) {

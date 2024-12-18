@@ -28,6 +28,7 @@ app.use(session({
     resave:false,
     saveUninitialized:false,
     secret:'wolf',
+     sameSite: 'none'
 }));
 
 app.use(cors({
