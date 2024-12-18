@@ -5,10 +5,10 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
     // Hardcodeamos un usuario de prueba
     const hardcodedUser = {
-        _id: "676321744d7321e753bb0b33",
-        userName: "Last",
-        email: "last@gmail.com",
-        role: "Edición",
+        _id: "676334c786e014948ea2269b",
+        userName: "Sofia",
+        email: "sofia@gmail.com",
+        role: "Diseño",
         contacts: [],
         tasks: [],
         expenses: [],
