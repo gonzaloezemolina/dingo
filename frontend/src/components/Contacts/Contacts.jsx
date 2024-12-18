@@ -89,7 +89,7 @@ const Contacts = () => {
 
         try {
             // Realizamos la petición al backend usando fetch
-            const response = await fetch(`http://localhost:8080/api/contacts/importCSV/${user._id}`, {
+            const response = await fetch(`https://dingo-kszy.onrender.com/api/contacts/importCSV/${user._id}`, {
                 method: 'POST',
                 body: formData,
             });

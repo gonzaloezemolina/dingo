@@ -1,16 +1,14 @@
 import React from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import SideBar from '../SideBar/SideBar'
-import { useUser } from '../../context/UserContext'
-import Loader from '../Loader/Loader'
 import './Layout.css'
 
-const Layout = () => {
-  const { user, isLoading } = useUser();
+const Layout = ({user}) => {
   const location = useLocation();
+
   const titlesAndDescriptions = {
     '/': {
-      title: user ? `Bienvenido ` : 'Bienvenido',
+      title: `Bienvenido`,
       description: 'Dashboard'
     },
     '/contactos': {
@@ -53,7 +51,6 @@ const Layout = () => {
       title:'Soporte al cliente',
       description:'Resuelve tus dudas rápidamente'
     },
-    // ... resto de tus rutas
     '/integraciones':{
       title:'Integraciones',
       description:'Conecta Dingo con tus aplicaciones favoritas'
@@ -61,17 +58,13 @@ const Layout = () => {
   };
 
   const currentRoute = titlesAndDescriptions[location.pathname];
-  const showHeader = Boolean(currentRoute);
-
-  if (isLoading) {
-    return <Loader />; // O tu componente de carga
-  }
+  const showHeader = Boolean(currentRoute); // Mostrar solo si existe configuración para la ruta
 
   return (
     <div className='layout'>
         <SideBar/>
             <div className="content">
-            {showHeader && (
+            {showHeader && ( // Condición para mostrar el encabezado
           <div className="header">
             <h1>{currentRoute.title}</h1>
             <p>{currentRoute.description}</p>
