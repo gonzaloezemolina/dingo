@@ -73,24 +73,7 @@ const Integrations = () => {
             <p>Integra las comunicaciones de tu equipo</p>
             <button class="button">Conectar</button>
         </div>
-        <div class="card mercado-libre">
-            <div class="card-header">
-                <img className='card-icon' src={mercadolibre} alt="logo de mercado pago" />
-                <span class="badge">E-commerce</span>
-            </div>
-            <h3>Mercado Libre</h3>
-            <p>Sincroniza tus ventas y productos</p>
-            <button class="button">Conectar</button>
-        </div>
-        <div class="card tienda-nube">
-            <div class="card-header">
-                <img className='card-icon' src={tiendaNube} alt="logo de tiendaNube"/>
-                <span class="badge">E-commerce</span>
-            </div>
-            <h3>Tienda Nube</h3>
-            <p>Gestiona tu tienda online</p>
-            <button class="button">Conectar</button>
-        </div>
+    
         <div class="card manychat">
             <div class="card-header">
                 <img className='card-icon' src={manyChat} alt="logo de manyChat"/>

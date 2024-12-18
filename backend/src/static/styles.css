@@ -39,8 +39,9 @@ body {
     background-color: rgba(0, 0, 0, 0.76);
     color: rgba(255, 255, 255, 0.521);
     border-radius: 10px;
-    width: 60%;
+    width: 80%;
     height: 60px;
+    border: 1px solid #f37221;
   }
 
   li:hover{
@@ -390,6 +391,7 @@ body {
 
   .container {
     width: 100%;
+    margin-top: 20px;
     padding: 16px;
   }
   

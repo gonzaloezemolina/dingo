@@ -17,47 +17,41 @@ const Dashboard = ({ user, contacts }) => {
 
   <div class="div1">
     <h3>Clientes Activos</h3>
-    {/* <p>{clientes}</p> */}
+    0
   </div>
 
 
 <div class="div2">
   <h3>Ingresos este mes</h3>
-  <p>+35%</p>
-  <p>$455.000</p>
+  <p>%0</p>
+  <p>$0</p>
 </div>
 
 <div class="div3">
   <h3>Portafolio CMS</h3>
-  <img className="portafolio" src={portfolio} alt="portafolio" />
-  <p>Sitio: gonzalomolina</p>
+  <p>No tienes sitio </p>
 </div>
 
 <div class="div4">
   <h3>Tareas pendientes <FaCheck/></h3>
-<p>Llamar a Cliente</p>
-<p>Revisar contrato</p>
-<p>Enviar reporte</p>
+<p>No tienes tareas </p>
 </div>
 <div class="div5"> 
   <h3>Proyectos Activos</h3>
-<p>Pendientes: 2</p>
-<p>En progreso: 5</p>
-<p>Completados: 1</p>
+<p>Pendientes:0 </p>
+<p>En progreso:0</p>
+<p>Completados:0</p>
 </div>
 <div class="div6">
   <h2>Tus integraciones</h2>
   <div className="integraciones_dashboard">
-    <img src={mercadopago} alt='icono'/>
-    <img src={stripe} alt='icono'/>
-    <img src={notion} alt='icono'/>
-    <img src={gmail} alt='icono'/>
+ <p>No tienes integraciones</p>
   </div>
 </div>
       
         <div className="div7">
         <h3>Time Tracker <FaClock/> </h3>
-        <p>Hoy: 2:45:13</p>
+        <p>Hoy: 00:00:00 </p>
         </div>
   </div>
   );

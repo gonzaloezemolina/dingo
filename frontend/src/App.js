@@ -16,10 +16,30 @@ import Profile from './components/Profile/Profile'
 import Tasks from './components/Tasks/Tasks'
 import Integrations from './components/Integrations/Integrations'
 import TimeTracker from './components/TimeTracker/TimeTracker'
-import Templates from './components/Templates/Templates'
+import { Templates } from './components/Templates/Templates';
 import Budgets from './components/Budgets/Budgets'
+import Email from './components/Email/Email'
+import { useState, useEffect } from 'react';
+import Loader from './components/Loader/Loader'
 
 function App() {
+
+  const [loading, setLoading] = useState(true);
+
+  // Simulamos una carga inicial de 3 segundos
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 5000); // 3 segundos de simulación
+
+    return () => clearTimeout(timer); // Limpiar el temporizador
+  }, []);
+
+  if (loading) {
+    return <Loader />; // Mostramos el loader durante la carga
+  }
+
+
   return (
     <UserProvider>
       <BrowserRouter>
@@ -41,6 +61,7 @@ function App() {
             <Route path='timetracker' element={<TimeTracker/>}/>
             <Route path='templates' element={<Templates/>}/>
             <Route path='presupuestos' element={<Budgets/>}/>
+            <Route path='email' element={<Email/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
