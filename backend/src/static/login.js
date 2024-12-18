@@ -15,6 +15,6 @@ form.addEventListener("submit", async function (e){
     })
     const result = await response.json();
     if (response.status === 200) {
-        return window.location.replace("http://localhost:3000/");
+        return window.location.replace("https://dingo-front.onrender.com/");
       }
 });
