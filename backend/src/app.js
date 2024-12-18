@@ -28,12 +28,16 @@ app.use(session({
     resave:false,
     saveUninitialized:false,
     secret:'wolf',
-     sameSite: 'none'
+     sameSite: 'none',
+     domain: '.onrender.com', // Dominio compartido
+     maxAge: 24 * 60 * 60 * 1000 // 24 horas
 }));
 
 app.use(cors({
     origin: config.front.FRONT, 
-    credentials: true 
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'] 
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
