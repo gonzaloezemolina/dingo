@@ -8,7 +8,7 @@ export const UserProvider = ({ children }) => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch('http://localhost:8080/api/users/usuario', {
+                const response = await fetch('https://dingo-kszy.onrender.com/api/users/usuario', {
                     method: 'GET',
                     credentials: 'include'
                 });
@@ -16,11 +16,11 @@ export const UserProvider = ({ children }) => {
                     const data = await response.json();
                     setUser(data); // Si el usuario está autenticado
                 } else {
-                    window.location.href = 'http://localhost:8080/login';
+                    window.location.href = 'https://dingo-kszy.onrender.com/login';
                 }
             } catch (error) {
                 console.error('Error al obtener datos del usuario', error);
-                window.location.href = 'http://localhost:8080/login';
+                window.location.href = 'https://dingo-kszy.onrender.com/login';
             }
         };
 
