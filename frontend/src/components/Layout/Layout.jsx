@@ -1,14 +1,17 @@
 import React from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import SideBar from '../SideBar/SideBar'
+import { useContext } from 'react'
 import './Layout.css'
+import { UserContext } from '../../context/UserContext';
 
-const Layout = ({user}) => {
+const Layout = () => {
+  const { user } = useContext(UserContext);
   const location = useLocation();
 
   const titlesAndDescriptions = {
     '/': {
-      title: `Bienvenido`,
+      title: `Bienvenido ${user.userName}`,
       description: 'Dashboard'
     },
     '/contactos': {

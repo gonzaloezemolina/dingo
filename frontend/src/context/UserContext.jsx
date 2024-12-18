@@ -1,31 +1,21 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+    // Hardcodeamos un usuario de prueba
+    const hardcodedUser = {
+        _id: "6762d083886d8030d49745a3",
+        userName: "usuariofalso",
+        email: "userfalse@gmail.com",
+        role: "Edición",
+        contacts: [],
+        tasks: [],
+        expenses: [],
+        budgets: []
+    };
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const response = await fetch('https://dingo-kszy.onrender.com/api/users/usuario', {
-                    method: 'GET',
-                    credentials: 'include'
-                });
-                if (response.ok) {
-                    const data = await response.json();
-                    setUser(data); // Si el usuario está autenticado
-                } else {
-                    window.location.href = 'https://dingo-kszy.onrender.com/login';
-                }
-            } catch (error) {
-                console.error('Error al obtener datos del usuario', error);
-                window.location.href = 'https://dingo-kszy.onrender.com/login';
-            }
-        };
-
-        fetchUser();
-    }, []);
+    const [user, setUser] = useState(hardcodedUser);
 
     return (
         <UserContext.Provider value={{ user }}>

@@ -29,6 +29,7 @@ app.use(session({
     saveUninitialized:false,
     secret:'wolf',
      sameSite: 'none',
+     secure: true,
      domain: '.onrender.com', // Dominio compartido
      maxAge: 24 * 60 * 60 * 1000 // 24 horas
 }));
