@@ -62,3 +62,101 @@
     transition: .5s;
     border: 1px solid #f37221;
 }
+
+
+
+
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: #f37221;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+  }
+  
+  .modal .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+
+  .contacts_container{
+    margin-top: 20px;
+  }
+
+  .no-contacts {
+    transform: translateY(100px);
+    text-align: center;
+    color: #666;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+  .table-wrapper {
+    max-height: 300px; /* Altura máxima del contenedor */
+    overflow-y: auto;
+    border: 1px solid #f37221;
+    border-radius: 5px;
+  }
+
+  .table-wrapper::-webkit-scrollbar {
+    width: 6px; /* Ancho de la barra vertical */
+    height: 6px; /* Ancho de la barra horizontal */
+  }
+  
+  .table-wrapper::-webkit-scrollbar-track {
+    background: #fcad03; /* Color del fondo del track */
+    border-radius: 10px; /* Opcional: bordes redondeados del track */
+  }
+  
+  .table-wrapper::-webkit-scrollbar-thumb {
+    background: #7bfeee; /* Color de la barra */
+    border-radius: 10px; /* Bordes redondeados de la barra */
+  }
+  
+  /* Hover sobre la barra */
+  .table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #64dac7; /* Color más oscuro al pasar el mouse */
+  }
+  
+  /* Compatibilidad para Firefox */
+  .table-wrapper {
+    scrollbar-width: thin; /* Hace la barra más fina */
+    scrollbar-color: #7bfeee #fd6601; /* Color de la barra y del track */
+  }
+
+  /* Tabla de contactos */
+  .contacts-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .contacts-table th, .contacts-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #f37221;
+  }
+  
+  .contacts-table th {
+    background-color: #000000;
+  }
+  
+  .contacts-table tr:hover {
+    background-color: #f37221;
+  }

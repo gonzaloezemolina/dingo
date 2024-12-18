@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { UserContext } from '../../context/UserContext';
 import './Contacts.css';
 
 const Contacts = () => {
   const {user} = useContext(UserContext);
+  const [contacts, setContacts] = useState([])
   const [contact, setContact] = useState({
     name: '',
     email: '',
@@ -11,6 +12,8 @@ const Contacts = () => {
     preferredChannel: '',
     status: ''
   });
+
+  const [modalOpen, setModalOpen] = useState(false);
 
   const [contactsList, setContactsList] = useState([]);
 
@@ -68,15 +71,53 @@ const Contacts = () => {
     }
   };
 
-  return (
-    <div>
-      <div className="contacts_tools">
-        <input className='search' type="search" placeholder='Buscar' />
-        <button className='contactBtn'>
-          Añadir cliente</button>
-        <button className='contactBtn'>Personalizar campos</button>
-        <button className='contactBtn'>Importar CSV</button>
-      </div>
+
+  const fileInputRef = useRef(null); // Referencia al input oculto
+
+    // Función para abrir la ventana de archivos
+    const openFileSelector = () => {
+        fileInputRef.current.click(); // Simula un click en el input
+    };
+
+    // Función que se ejecuta cuando el usuario selecciona un archivo
+    const handleFileChange = async (e) => {
+        const file = e.target.files[0]; // Captura el archivo seleccionado
+        if (!file) return; // Si no hay archivo, no hacemos nada
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            // Realizamos la petición al backend usando fetch
+            const response = await fetch(`http://localhost:8080/api/contacts/importCSV/${user._id}`, {
+                method: 'POST',
+                body: formData,
+            });
+            const data = await response.json(); // Aquí parseas el JSON
+            // Verifica si la respuesta contiene contactos
+        if (data.contacts) {
+          setContacts(data.contacts); // Actualiza el estado de contactos
+          console.log('Resultado:', data);
+          alert(`Contactos importados: ${data.count}`);
+      } else {
+          console.error('No se encontraron contactos en la respuesta');
+          alert('No se pudieron importar los contactos');
+      }
+        } catch (error) {
+            console.error('Error subiendo archivo:', error);
+            alert('Error al importar contactos');
+        }
+    };
+
+
+
+
+
+ // Modal para añadir contacto
+ const Modal = () => (
+  <div className="modal">
+    <div className="modal-content">
+      <span className="close" onClick={() => setModalOpen(false)}>&times;</span>
       <h2>Añadir contacto</h2>
       <form className="contact-form" onSubmit={(e) => { e.preventDefault(); addContact(); }}>
         <input
@@ -108,26 +149,77 @@ const Contacts = () => {
           onChange={handleInputChange}
         />
         <select
-          type="text"
           name="status"
-          placeholder="Estado"
           value={contact.status}
           onChange={handleInputChange}
-        />
-        <button type="submit">Añadir cliente</button>
+        >
+          <option value="">Seleccione estado</option>
+          <option value="activo">Activo</option>
+          <option value="inactivo">Inactivo</option>
+          <option value="pendiente">Pendiente</option>
+        </select>
+        <button type="submit">Añadir contacto</button>
       </form>
+    </div>
+  </div>
+);
 
-      { <ul>
-        {contactsList.map((contact) => (
-          <li key={contact._id}>
-            <strong>Nombre:</strong> {contact.name} <br />
-            <strong>Email:</strong> {contact.email} <br />
-            <strong>Proyecto:</strong> {contact.project} <br />
-            <strong>Canal preferido:</strong> {contact.preferredChannel} <br />
-            <strong>Estado:</strong> {contact.status} <br />
-          </li>
-        ))}
-      </ul>}
+
+
+
+
+  return (
+    <div>
+      <div className="contacts_tools">
+        <input className='search' type="search" placeholder='Buscar' />
+        <button className='contactBtn' onClick={() => setModalOpen(true)}>
+          Añadir cliente</button>
+        <button className='contactBtn'>Personalizar campos</button>
+        <button className='contactBtn' onClick={openFileSelector}>Importar CSV</button>
+        <input
+                type="file"
+                accept=".csv"
+                ref={fileInputRef}
+                style={{ display: 'none' }} // Lo ocultamos visualmente
+                onChange={handleFileChange}
+            />
+      </div>
+
+
+{/* Renderizado */}
+
+{/* Mostrar modal */}
+{modalOpen && <Modal />}
+
+{/* Tabla de contactos */}
+<div className="contacts_container">
+        {contacts.length === 0 ? (
+          <p className="no-contacts">No tienes contactos</p>
+        ) : (
+          <div className="table-wrapper">
+            <table className="contacts-table">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Email</th>
+                  <th>Estado</th>
+                  <th>Canal preferido</th>
+                </tr>
+              </thead>
+              <tbody>
+                {contacts.map((contact, index) => (
+                  <tr key={index}>
+                    <td>{contact.name}</td>
+                    <td>{contact.email}</td>
+                    <td>{contact.status}</td>
+                    <td>{contact.preferredChannel}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

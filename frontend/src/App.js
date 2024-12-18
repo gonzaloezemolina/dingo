@@ -18,6 +18,7 @@ import Help from './components/Help/Help';
 import Backups from './components/Backups/Backups';
 import Alerts from './components/Alerts/Alerts';
 import Templates from './components/Templates/Templates'
+import Budgets from './components/Budgets/Budgets';
 
 function App() {
 
@@ -79,6 +80,7 @@ function App() {
           <Route path='integraciones' element={<Integrations/>}/>
           <Route path='timetracker' element={<TimeTracker/>}/>
           <Route path='templates' element={<Templates/>}/>
+          <Route path='presupuestos' element={<Budgets/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,18 +1,30 @@
 import Router from 'express'
 import contactsController from '../../controllers/contact.controller.js';
 import userController from '../../controllers/user.controller.js';
+import upload from '../../middlewares/upload.js';
+// import { io } from '../../app.js';
 
 const router = Router();
 
 const contactsService = new contactsController();
 const userServ = new userController();
 
-router.get('/', async (req,res) => {
+router.get('/:cid', async (req,res) => {
     try {
-        const getContacts = await contactsService.getContacts();
-        res.status(200).json({message:"contactos bien obtenidos"});
+        const {cid} = req.params;
+        const getUser = await userServ.getById(cid);
+        console.log("Usuario obtenido:", getUser);
+        if (!getUser) {
+        return res.status(404).json({ error: "Usuario no encontrado" });
+        }
+        const getContacts = await contactsService.getContacts(getUser);
+        if (!getContacts) {
+            return res.status(404).json({ error: "No se encontraron contactos." });
+        }
+        res.status(200).json(getContacts); // Aquí enviamos la lista de contactos como respuesta
     } catch (error) {
-        console.log("Error teniendo contactos", error);
+        console.log("Error obteniendo contactos", error);
+        res.status(500).json({ error: "Error obteniendo contactos" });
     }
 })
 
@@ -48,6 +60,25 @@ router.post('/newContact/:cid', async (req,res) => {
     } catch (error) {
         console.log("Error en endpoint newContact,", error);
         res.status(500).send({message:"Error en endpoint newContact:", error})        
+    }
+});
+
+router.post('/importCSV/:cid', upload.single('file'), async (req, res) => {
+    try {
+        console.log(req.file); 
+        const {cid} = req.params;
+        const filePath = req.file.path; // Ruta del archivo subido
+        // const userId = req.user._id;
+        const getUser = await userServ.getById(cid);
+        if (!getUser) {
+          return res.status(404).json({ error: "Usuario no encontrado" });
+        }
+        const result = await contactsService.importContacts(filePath, getUser);
+        await getUser.save();
+        res.status(200).json({ message: "Contactos importados correctamente", count: result.length, contacts: result });
+    } catch (error) {
+        console.error("Error importando contactos:", error);
+        res.status(500).json({ message: "Error importando contactos", error });
     }
 });
 

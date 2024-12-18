@@ -20,8 +20,5 @@ router.get('/registro', (req,res) => {
     res.sendFile(__dirname + '/views/register.html');
 });
 
-router.get('/3d', (req,res) => {
-    res.sendFile(__dirname + '/views/3d.html')
-})
 
 export default router

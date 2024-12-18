@@ -8,7 +8,7 @@ const schema = new mongoose.Schema({
     password: String,
     role:{
         type:String,
-        enum: ["Freelancer", "Emprendedor"],
+        enum: ["Edición", "Diseño", "Desarrollo web", "Fotografía", "Ilustración", "Copywriting", "Marketing", "Agencia", "Otro" ],
         default: "Freemium",
     },
     contacts: [
@@ -27,6 +27,12 @@ const schema = new mongoose.Schema({
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'expenses',
+      }
+    ],
+    budgets:[
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'budgets'
       }
     ]
 });

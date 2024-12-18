@@ -1,93 +1,412 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
-    <title>Dingo | Marketing</title>
+    <title>Dingo - CRM Para aquel que lo hace todo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset y estilos base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            color: #000000;
+            background-color: #f97316;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Utilidades */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navegación */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: black;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f97316;
+        }
+
+        /* .nav-logo img {
+        width: 10px; 
+        height: auto; 
+        display: block;
+        object-fit: contain;
+    } */
+
+        .nav-links {
+            display: none;
+        }
+        .nav-link {
+            margin-left: 1.5rem;
+            color: #f97316;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #1fa2d6;
+        }
+        .nav-cta {
+            margin-left: 8px;
+            padding: 0.5rem 1rem;
+            background-color: #1fa2d6;
+            color: white;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .nav-cta:hover {
+            background-color: #1ccfc6;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 5rem;
+            background: linear-gradient(to bottom,#f97316 , #f7dc94);
+        }
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        .hero-content {
+            max-width: 600px;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .hero-description {
+            font-size: 1.25rem;
+            color: #232529;
+            margin-bottom: 2rem;
+        }
+        .hero-cta {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #1fa2d6;
+            color: white;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .hero-cta:hover {
+            background-color: #1ccfc6;
+        }
+        .hero-secondary-cta {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: white;
+            color: #1fa2d6;
+            border: 1px solid #1fa2d6;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            margin-left: 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .hero-secondary-cta:hover {
+            background-color: #1fa2d6;
+            color: white;
+        }
+        .hero-image {
+            position: relative;
+        }
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .hero-image::before,
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            filter: blur(50px);
+            opacity: 0.3;
+        }
+        .hero-image::before {
+            top: -50px;
+            left: -50px;
+            background-color: #bae6fd;
+        }
+        .hero-image::after {
+            bottom: -50px;
+            right: -50px;
+            background-color: #fed7aa;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        .features-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .features-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .features-description {
+            font-size: 1.25rem;
+            color: #4b5563;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .feature-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: #fed7aa;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .feature-icon {
+            font-size: 2rem;
+            color: #f97316;
+            margin-bottom: 1rem;
+        }
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .feature-description {
+            color: #4b5563;
+        }
+
+        /* Integrations Section */
+        .integrations {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, white, #e0f2fe);
+        }
+        .integrations-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .integrations-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .integrations-description {
+            font-size: 1.25rem;
+            color: #4b5563;
+        }
+        .integrations-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .integration-item {
+            background-color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            min-width: 140px;
+            text-align: center;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            background-color: #f97316;
+            color: white;
+        }
+        .cta-container {
+            text-align: center;
+        }
+        .cta-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .cta-description {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: white;
+            color: #f97316;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #f3f4f6;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            .hero-container {
+                flex-direction: row;
+                align-items: center;
+            }
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar" id="navbar">
-            <div class="nav_info">
-                <div class="nav_logo">
-                    <a href="/">
-                        <img src="/images/newlogo.png" alt="Logo de Dingo">
-                    </a>
-            </div>
-            <div class="nav_items">
-                <ul>
-                    <li>Productos</li>
-                    <a href="/precios">
-                        <li>Precios</li>
-                    </a>
-                    <li>Recursos</li>
-                    <li>Soluciones</li>
-                </ul>
-            </div>
-            </div>
-            <div class="nav_actions">
-                <ul>
-                    <li>Ayuda</li>
-                    <a href="/registro">
-                        <button>Registrarse</button>
-                    </a>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <main>
-        <div class="hero_section">
-            <div class="hero_section_text">
-                <h1>
-                    Soluciones CRM para aquel que lo hace todo
-                </h1>
-                <p>
-                    Centraliza tus clientes, automatiza procesos y toma decisiones estratégicas para hacer crecer tu emprendimiento de manera más eficiente. 
-                </p>
-            </div>
-
-            <div class="hero_section_ctas">
-                <a href="/login">
-                    <button class="probarya">
-                        Probar ya!
-                    </button>
+    <!-- Navegación -->
+    <nav class="nav">
+        <div class="container nav-container">
+            <div class="nav-logo">
+                <a href="/">
+                    <!-- <img src="/images/newlogo.png" alt="Logo de Dingo"> -->
+                    Dingo
                 </a>
-                <button class="leermas">
-                    Leer más
-                </button>
             </div>
-
-            <div class="hero_section_apps">
-                <p>Todas tus herramientas conectadas</p>
-                <div class="hero_section_apps_icons">
-                    <ul>
-                        <li>
-                            <img src="/images/tiendanube.png" alt="TiendaNube" class="mercadolibre">
-                        </li>
-                        <li>
-                            <img src="/images/mercadolibre.svg" alt="MercadoLibre" class="mercadolibre">
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35" height="35" viewBox="0 0 48 48">
-                                <path fill="#0081fb" d="M47,29.36l-2.193,1.663L42.62,29.5c0-0.16,0-0.33-0.01-0.5c0-0.16,0-0.33-0.01-0.5	c-0.14-3.94-1.14-8.16-3.14-11.25c-1.54-2.37-3.51-3.5-5.71-3.5c-2.31,0-4.19,1.38-6.27,4.38c-0.06,0.09-0.13,0.18-0.19,0.28	c-0.04,0.05-0.07,0.1-0.11,0.16c-0.1,0.15-0.2,0.3-0.3,0.46c-0.9,1.4-1.84,3.03-2.86,4.83c-0.09,0.17-0.19,0.34-0.28,0.51	c-0.03,0.04-0.06,0.09-0.08,0.13l-0.21,0.37l-1.24,2.19c-2.91,5.15-3.65,6.33-5.1,8.26C14.56,38.71,12.38,40,9.51,40	c-3.4,0-5.56-1.47-6.89-3.69C1.53,34.51,1,32.14,1,29.44l4.97,0.17c0,1.76,0.38,3.1,0.89,3.92C7.52,34.59,8.49,35,9.5,35	c1.29,0,2.49-0.27,4.77-3.43c1.83-2.53,3.99-6.07,5.44-8.3l1.37-2.09l0.29-0.46l0.3-0.45l0.5-0.77c0.76-1.16,1.58-2.39,2.46-3.57	c0.1-0.14,0.2-0.28,0.31-0.42c0.1-0.14,0.21-0.28,0.31-0.41c0.9-1.15,1.85-2.22,2.87-3.1c1.85-1.61,3.84-2.5,5.85-2.5	c3.37,0,6.58,1.95,9.04,5.61c2.51,3.74,3.82,8.4,3.97,13.25c0.01,0.16,0.01,0.33,0.01,0.5C47,29.03,47,29.19,47,29.36z"></path><linearGradient id="wSMw7pqi7WIWHewz2_TZXa_PvvcWRWxRKSR_gr1" x1="42.304" x2="13.533" y1="24.75" y2="24.75" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0081fb"></stop><stop offset=".995" stop-color="#0064e1"></stop></linearGradient><path fill="url(#wSMw7pqi7WIWHewz2_TZXa_PvvcWRWxRKSR_gr1)" d="M4.918,15.456	C7.195,11.951,10.483,9.5,14.253,9.5c2.184,0,4.354,0.645,6.621,2.493c2.479,2.02,5.122,5.346,8.419,10.828l1.182,1.967	c2.854,4.746,4.477,7.187,5.428,8.339C37.125,34.606,37.888,35,39,35c2.82,0,3.617-2.54,3.617-5.501L47,29.362	c0,3.095-0.611,5.369-1.651,7.165C44.345,38.264,42.387,40,39.093,40c-2.048,0-3.862-0.444-5.868-2.333	c-1.542-1.45-3.345-4.026-4.732-6.341l-4.126-6.879c-2.07-3.452-3.969-6.027-5.068-7.192c-1.182-1.254-2.642-2.754-5.067-2.754	c-1.963,0-3.689,1.362-5.084,3.465L4.918,15.456z"></path><linearGradient id="wSMw7pqi7WIWHewz2_TZXb_PvvcWRWxRKSR_gr2" x1="7.635" x2="7.635" y1="32.87" y2="13.012" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0081fb"></stop><stop offset=".995" stop-color="#0064e1"></stop></linearGradient><path fill="url(#wSMw7pqi7WIWHewz2_TZXb_PvvcWRWxRKSR_gr2)" d="M14.25,14.5	c-1.959,0-3.683,1.362-5.075,3.465C7.206,20.937,6,25.363,6,29.614c0,1.753-0.003,3.072,0.5,3.886l-3.84,2.813	C1.574,34.507,1,32.2,1,29.5c0-4.91,1.355-10.091,3.918-14.044C7.192,11.951,10.507,9.5,14.27,9.5L14.25,14.5z"></path><path d="M21.67,20.27l-0.3,0.45l-0.29,0.46c0.71,1.03,1.52,2.27,2.37,3.69l0.21-0.37c0.02-0.04,0.05-0.09,0.08-0.13 c0.09-0.17,0.19-0.34,0.28-0.51C23.19,22.5,22.39,21.29,21.67,20.27z M24.94,15.51c-0.11,0.14-0.21,0.28-0.31,0.42 c0.73,0.91,1.47,1.94,2.25,3.1c0.1-0.16,0.2-0.31,0.3-0.46c0.04-0.06,0.07-0.11,0.11-0.16c0.06-0.1,0.13-0.19,0.19-0.28 c-0.76-1.12-1.5-2.13-2.23-3.03C25.15,15.23,25.04,15.37,24.94,15.51z" opacity=".05"></path><path d="M21.67,20.27l-0.3,0.45c0.71,1.02,1.51,2.24,2.37,3.65c0.09-0.17,0.19-0.34,0.28-0.51C23.19,22.5,22.39,21.29,21.67,20.27 z M24.63,15.93c0.73,0.91,1.47,1.94,2.25,3.1c0.1-0.16,0.2-0.31,0.3-0.46c-0.77-1.14-1.52-2.16-2.24-3.06 C24.83,15.65,24.73,15.79,24.63,15.93z" opacity=".07"></path>
-                                </svg>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35" height="35" viewBox="0 0 48 48">
-                                <polygon fill="#ffc107" points="30.129,15.75 18.871,9.25 5.871,31.25 17.129,37.75"></polygon><path fill="#1e88e5" d="M31.871,37.75c1.795,3.109,5.847,4.144,8.879,2.379c3.103-1.806,4.174-5.77,2.379-8.879l-13-22 c-1.795-3.109-5.835-4.144-8.879-2.379c-3.106,1.801-4.174,5.77-2.379,8.879L31.871,37.75z"></path><circle cx="11.5" cy="34.5" r="6.5" fill="#43a047"></circle>
-                                </svg>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35" height="35" viewBox="0 0 48 48">
-                                <path fill="#0288D1" d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5V37z"></path><path fill="#FFF" d="M12 19H17V36H12zM14.485 17h-.028C12.965 17 12 15.888 12 14.499 12 13.08 12.995 12 14.514 12c1.521 0 2.458 1.08 2.486 2.499C17 15.887 16.035 17 14.485 17zM36 36h-5v-9.099c0-2.198-1.225-3.698-3.192-3.698-1.501 0-2.313 1.012-2.707 1.99C24.957 25.543 25 26.511 25 27v9h-5V19h5v2.616C25.721 20.5 26.85 19 29.738 19c3.578 0 6.261 2.25 6.261 7.274L36 36 36 36z"></path>
-                                </svg>
-                        </li>
-                    </ul>
-                </div>
-   
+            <div class="nav-links">
+                <a href="#" class="nav-link">Productos</a>
+                <a href="/precios" class="nav-link">Precios</a>
+                <a href="#" class="nav-link">Recursos</a>
+                <a href="#" class="nav-link">Soluciones</a>
+                <a href="#" class="nav-link">Comunidad</a>
+            </div>
+            <div>
+                <a href="#" class="nav-link">Ayuda</a>
+                <a href="/registro" class="nav-cta">Registrarse</a>
             </div>
         </div>
-    </main>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">¡Hey! Tu CRM amigable para <span style="color: #1fa2d6;">freelancers</span> 🚀</h1>
+                <p class="hero-description">Deja que Dingo se encargue del papeleo mientras tú te concentras en lo que mejor sabes hacer: ¡crear cosas increíbles!</p>
+                <div>
+                    <a href="/registro" class="hero-cta">¡Pruébalo gratis! →</a>
+                    <a href="#" class="hero-secondary-cta">Ver demo</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/500x400" alt="Dashboard Preview">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-header">
+                <h2 class="features-title">Todo lo que necesitas, sin complicaciones 😉</h2>
+                <p class="features-description">Herramientas poderosas envueltas en una interfaz amigable</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3 class="feature-title">Súper intuitivo</h3>
+                    <p class="feature-description">Tan fácil de usar que hasta tu mascota podría manejarlo (bueno, casi)</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Automatización mágica</h3>
+                    <p class="feature-description">Deja que Dingo haga el trabajo pesado mientras tú tomas un café</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h3 class="feature-title">Ahorra tiempo</h3>
+                    <p class="feature-description">Menos tiempo en administración, más tiempo para crear</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">IA integrada</h3>
+                    <p class="feature-description">Un asistente virtual que te ayuda sin juzgar tus decisiones</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">❤️</div>
+                    <h3 class="feature-title">Hecho con amor</h3>
+                    <p class="feature-description">Creado por freelancers que entienden tus necesidades</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrations Section -->
+    <section class="integrations">
+        <div class="container">
+            <div class="integrations-header">
+                <h2 class="integrations-title">Conéctate con tus herramientas favoritas 🤝</h2>
+                <p class="integrations-description">Dingo se lleva bien con todos</p>
+            </div>
+            <div class="integrations-grid">
+                <div class="integration-item">Slack</div>
+                <div class="integration-item">Figma</div>
+                <div class="integration-item">Notion</div>
+                <div class="integration-item">Meta</div>
+                <div class="integration-item">LinkedIn</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container cta-container">
+            <h2 class="cta-title">¿Listo para hacer tu trabajo más divertido? 🎉</h2>
+            <p class="cta-description">Únete a miles de freelancers que ya disfrutan organizando su trabajo con Dingo</p>
+            <a href="#" class="cta-button">Comenzar ahora →</a>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript para manejar el scroll y cambiar la opacidad de la navegación
+        window.addEventListener('scroll', function() {
+            var nav = document.querySelector('.nav');
+            if (window.scrollY > 50) {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+            }
+        });
+    </script>
 </body>
 </html>

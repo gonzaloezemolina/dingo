@@ -13,6 +13,6 @@
     background-color: rgba(66, 66, 66, 0.192);
     color: white;
     padding: 15px;
-    overflow: scroll;
+    /* overflow: scroll; */
   }
   

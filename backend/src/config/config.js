@@ -25,7 +25,16 @@ export default {
     COOKIE: process.env.JWT_COOKIE,
     SECRET: process.env.JWT_SECRET || "jwtSecret",
   },
+  back:{
+    BACKEND: process.env.BACKEND_URL
+  },
   front:{
     FRONT: process.env.FRONT
+  },
+  EMAIL:{
+    USER:process.env.EMAIL_USER,
+    PASSWORD:process.env.EMAIL_PASSWORD,
+    HOST:process.env.EMAIL_HOST,
+    PORT:process.env.EMAIL_PORT
   }
 };

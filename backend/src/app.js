@@ -2,6 +2,7 @@ import dotenv from 'dotenv'
 dotenv.config();
 import express from 'express'
 import mongoose, { mongo } from 'mongoose'
+import multer from 'multer';
 import morgan from 'morgan'
 import cors from 'cors'
 import config from './config/config.js';
@@ -11,12 +12,14 @@ import userRouter from './routes/software/user.routes.js'
 import contactsRouter from './routes/software/contacts.routes.js'
 import taskRouter from './routes/software/task.routes.js'
 import paymentRouter from './routes/payment/payment.routes.js'
+import budgetRouter from './routes/software/budget.routes.js'
 import __dirname from './utils.js';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 
 const app = express();
 const database = mongoose.connect(config.mongo.URI)
+
 
 app.use(session({
     store: MongoStore.create({
@@ -48,5 +51,6 @@ app.use('/api/users/', userRouter);
 app.use('/api/contacts/', contactsRouter);
 app.use('/api/tasks/', taskRouter);
 app.use('/api/mercadopago/', paymentRouter);
+app.use('/api/budgets/', budgetRouter)
 
 
