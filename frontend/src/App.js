@@ -26,7 +26,7 @@ function App() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/users/usuario', {
+        const response = await fetch('https://dingo-kszy.onrender.com/api/users/usuario', {
           method: 'GET',
           credentials: 'include'
         });
