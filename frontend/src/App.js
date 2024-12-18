@@ -4,7 +4,7 @@ import Layout from './components/Layout/Layout'
 import Settings from './components/Settings/Settings';
 import Loader from './components/Loader/Loader';
 import { UserProvider } from './context/UserContext';
-import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import Bills from './components/Bills/Bills';
 import Contacts from './components/Contacts/Contacts';
@@ -36,13 +36,11 @@ function App() {
           const data = await response.json();
           setUser(data);
         } else {
-          // No es un error crítico si no se obtienen datos de usuario
           console.log('No se pudieron obtener los datos de usuario');
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
       } finally {
-        // Siempre termina el estado de carga
         setIsLoading(false);
       }
     };
@@ -60,18 +58,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Layout user={user}/>}>
-            {/* Ruta de inicio condicional */}
-            <Route index element={user ? <Dashboard user={user} /> : <Navigate to="https://dingo-kszy.onrender.com/login" />} />
-            
-            {/* Rutas protegidas */}
-            <Route 
-              path='contactos' 
-              element={user ? <Contacts/> : <Navigate to="https://dingo-kszy.onrender.com/login" />}
-            />
-            <Route 
-              path='configuracion' 
-              element={user ? <Settings/> : <Navigate to="https://dingo-kszy.onrender.com/login" />}
-            >
+            <Route index element={<Dashboard user={user} />} />
+            <Route path='contactos' element={<Contacts/>}/>
+            <Route path='configuracion' element={<Settings/>}>
               <Route path='ui' element={<Interface/>}/>
               <Route path='bills' element={<Bills/>}/>
               <Route path='alertas' element={<Alerts/>}/>
@@ -79,18 +68,12 @@ function App() {
               <Route path='security' element={<Security/>}/>
               <Route path='help' element={<Help/>}/>
             </Route>
-            {/* Continúa con el resto de las rutas similares */}
             <Route path='perfil' element={<Profile/>}/>
-          <Route path='tareas' element={<Tasks/>}/>
-          <Route path='integraciones' element={<Integrations/>}/>
-          <Route path='timetracker' element={<TimeTracker/>}/>
-          <Route path='templates' element={<Templates/>}/>
-          <Route path='presupuestos' element={<Budgets/>}/>
-            <Route 
-              path='perfil' 
-              element={user ? <Profile/> : <Navigate to="/login" />}
-            />
-            {/* ... otras rutas ... */}
+            <Route path='tareas' element={<Tasks/>}/>
+            <Route path='integraciones' element={<Integrations/>}/>
+            <Route path='timetracker' element={<TimeTracker/>}/>
+            <Route path='templates' element={<Templates/>}/>
+            <Route path='presupuestos' element={<Budgets/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
